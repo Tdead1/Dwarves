@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://n6fnfy3ek4l6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_57rv0"]
+height = 0.2
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_57rv0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(1, 0.330511, 0.270754, 1)
