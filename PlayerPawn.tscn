@@ -27,6 +27,7 @@ script = ExtResource("2_mr4uw")
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera"]
 target_position = Vector3(0, 0, -1000)
+collision_mask = 2
 
 [node name="GameHud" parent="Camera" instance=ExtResource("3_t1dq3")]
 

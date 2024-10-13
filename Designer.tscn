@@ -1,9 +1,28 @@
-[gd_scene load_steps=16 format=3 uid="uid://c76vjfd7f3ja0"]
+[gd_scene load_steps=21 format=3 uid="uid://c76vjfd7f3ja0"]
 
 [ext_resource type="Script" path="res://DesignerWorld.gd" id="1_6r52b"]
 [ext_resource type="Script" path="res://DesignerCamera.gd" id="2_5efk6"]
 [ext_resource type="Script" path="res://DesignerHUD.gd" id="3_wbdtx"]
 [ext_resource type="Texture2D" uid="uid://ddhjjeiwketqg" path="res://16pxGrid.png" id="4_58dp2"]
+[ext_resource type="ButtonGroup" uid="uid://dwlfk1x6cb8sc" path="res://DesignerButtonGroup.tres" id="5_plb4k"]
+[ext_resource type="Texture2D" uid="uid://b4wr1r2ymp10b" path="res://crosshair.png" id="6_60fbj"]
+[ext_resource type="Script" path="res://SpawnZone.gd" id="8_awsil"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_57rv0"]
+height = 0.2
+
+[sub_resource type="PackedScene" id="PackedScene_0jesd"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("MeshInstance3D", "mesh", "OmniLight3D", "transform", "light_color"),
+"node_count": 2,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 0, 0, -1, 1, 1, 0, 0, 0, 0, 2, 2, -1, 2, 3, 1, 4, 2, 0),
+"variants": [SubResource("CylinderMesh_57rv0"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0), Color(1, 0.330511, 0.270754, 1)],
+"version": 3
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfj4r"]
 transparency = 1
@@ -79,59 +98,153 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_wbdtx")
+mySelectedResource = SubResource("PackedScene_0jesd")
 
 [node name="ExitEditorButton" type="Button" parent="DesignerCamera/UIWorldHUD"]
-layout_mode = 0
-offset_left = 1013.0
-offset_top = 23.0
-offset_right = 1126.0
-offset_bottom = 65.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.0
+offset_top = 17.0
+offset_right = -26.0
+offset_bottom = 59.0
+grow_horizontal = 0
 text = "Exit Editor
 "
 
 [node name="ClearEditorButton" type="Button" parent="DesignerCamera/UIWorldHUD"]
-layout_mode = 0
-offset_left = 1013.0
-offset_top = 77.0
-offset_right = 1126.0
-offset_bottom = 119.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -142.0
+offset_top = 75.0
+offset_right = -29.0
+offset_bottom = 117.0
+grow_horizontal = 0
 text = "Clear
 "
 
+[node name="SelectFireButton" type="Button" parent="DesignerCamera/UIWorldHUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -77.0
+offset_right = 95.0
+offset_bottom = -10.0
+grow_vertical = 0
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("5_plb4k")
+text = "Fire"
+
+[node name="SelectHouseButton" type="Button" parent="DesignerCamera/UIWorldHUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 101.0
+offset_top = -77.0
+offset_right = 179.0
+offset_bottom = -10.0
+grow_vertical = 0
+toggle_mode = true
+button_group = ExtResource("5_plb4k")
+text = "House"
+
+[node name="SelectSpikesButton" type="Button" parent="DesignerCamera/UIWorldHUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 185.0
+offset_top = -77.0
+offset_right = 272.0
+offset_bottom = -10.0
+grow_vertical = 0
+toggle_mode = true
+button_group = ExtResource("5_plb4k")
+text = "Spikes"
+
+[node name="SelectEnemyTeleporterButton" type="Button" parent="DesignerCamera/UIWorldHUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 277.0
+offset_top = -77.0
+offset_right = 367.0
+offset_bottom = -10.0
+grow_vertical = 0
+toggle_mode = true
+button_group = ExtResource("5_plb4k")
+text = "Enemy
+Teleporter
+"
+
+[node name="CrosshairControl" type="Control" parent="DesignerCamera/UIWorldHUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Sprite2D" parent="DesignerCamera/UIWorldHUD/CrosshairControl"]
+texture = ExtResource("6_60fbj")
+
 [node name="SpawnCast" type="RayCast3D" parent="DesignerCamera"]
 target_position = Vector3(0, 0, -1000)
+collision_mask = 2
 hit_from_inside = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_emg0f")
+skeleton = NodePath("")
 
-[node name="CollisionPlane" type="StaticBody3D" parent="CSGMesh3D"]
+[node name="CollisionPlane" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CSGMesh3D/CollisionPlane"]
+[node name="CollisionShape" type="CollisionShape3D" parent="MeshInstance3D/CollisionPlane"]
 shape = SubResource("HeightMapShape3D_yt88k")
 
-[node name="Skybox" type="MeshInstance3D" parent="CSGMesh3D"]
+[node name="Skybox" type="MeshInstance3D" parent="MeshInstance3D"]
 mesh = SubResource("SphereMesh_un7ou")
+skeleton = NodePath("")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="CSGMesh3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.4755, 0)
 light_energy = 1.545
 omni_range = 102.532
 
-[node name="IndicatorY" type="MeshInstance3D" parent="CSGMesh3D"]
+[node name="IndicatorY" type="MeshInstance3D" parent="MeshInstance3D"]
 mesh = SubResource("CylinderMesh_afxgp")
+skeleton = NodePath("")
 
-[node name="IndicatorX" type="MeshInstance3D" parent="CSGMesh3D"]
+[node name="IndicatorX" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_86c3k")
+skeleton = NodePath("")
 
-[node name="IndicatorZ" type="MeshInstance3D" parent="CSGMesh3D"]
+[node name="IndicatorZ" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_u5xyx")
+skeleton = NodePath("")
 
 [node name="SpawnZone" type="Node3D" parent="."]
+script = ExtResource("8_awsil")
 
 [connection signal="pressed" from="DesignerCamera/UIWorldHUD/ExitEditorButton" to="DesignerCamera/UIWorldHUD" method="_on_exit_editor_button_pressed"]
 [connection signal="pressed" from="DesignerCamera/UIWorldHUD/ClearEditorButton" to="DesignerCamera/UIWorldHUD" method="_on_clear_editor_button_pressed"]
+[connection signal="pressed" from="DesignerCamera/UIWorldHUD/SelectFireButton" to="DesignerCamera/UIWorldHUD" method="_on_select_fire_button_pressed"]
+[connection signal="pressed" from="DesignerCamera/UIWorldHUD/SelectHouseButton" to="DesignerCamera/UIWorldHUD" method="_on_select_house_button_pressed"]
+[connection signal="pressed" from="DesignerCamera/UIWorldHUD/SelectSpikesButton" to="DesignerCamera/UIWorldHUD" method="_on_select_spikes_button_pressed"]
+[connection signal="pressed" from="DesignerCamera/UIWorldHUD/SelectEnemyTeleporterButton" to="DesignerCamera/UIWorldHUD" method="_on_select_enemy_teleporter_button_pressed"]

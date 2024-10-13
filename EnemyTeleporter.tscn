@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6e8umeo30uag"]
+
+[ext_resource type="Script" path="res://EnemyTeleporter.gd" id="1_q6kcs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyjlt"]
+albedo_color = Color(1, 0, 0.93119, 1)
+emission_enabled = true
+emission = Color(1, 0, 0.442751, 1)
+emission_energy_multiplier = 4.98
+
+[sub_resource type="TorusMesh" id="TorusMesh_ygkdo"]
+material = SubResource("StandardMaterial3D_xyjlt")
+inner_radius = 0.2
+outer_radius = 0.151
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8oqq"]
+albedo_color = Color(1, 0, 0.93119, 1)
+emission_enabled = true
+emission = Color(0.363281, 0, 0.160843, 1)
+emission_energy_multiplier = 4.98
+
+[sub_resource type="TorusMesh" id="TorusMesh_763ro"]
+material = SubResource("StandardMaterial3D_t8oqq")
+inner_radius = 20.0
+outer_radius = 20.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n1kxp"]
+radius = 20.0
+
+[node name="EnemyTeleporter" type="Node3D"]
+script = ExtResource("1_q6kcs")
+
+[node name="GizmoR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_ygkdo")
+
+[node name="GizmoL" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+mesh = SubResource("TorusMesh_ygkdo")
+
+[node name="RangeR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_763ro")
+
+[node name="RangeL" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+mesh = SubResource("TorusMesh_763ro")
+
+[node name="RangeM" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -7.30144e-30, 1, 4.37114e-08, 1, -1.59578e-37, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+mesh = SubResource("TorusMesh_763ro")
+
+[node name="AffectZone" type="Area3D" parent="."]
+
+[node name="CollisionSphere" type="CollisionShape3D" parent="AffectZone"]
+shape = SubResource("SphereShape3D_n1kxp")

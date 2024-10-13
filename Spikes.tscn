@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8mp4rm57fx1k"]
+
+[ext_resource type="Script" path="res://Spikes.gd" id="1_10y5l"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_4vey7"]
+size = Vector3(0.1, 0.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87hyp"]
+size = Vector3(1, 1.8208, 1)
+
+[node name="Spikes" type="Node3D"]
+script = ExtResource("1_10y5l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.559522, -0.00206035, 0.829267, 0.000303264, 3.71693, 0.000464322, -0.829147, -3.08403e-05, 0.559603, 0.489019, 0.387818, 0.492744)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.787656, 0, 0.616115, 0, 3.71693, 0, -0.616115, 0, 0.787656, -0.510981, 0.387818, 0.492744)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.967343, 0, 0.253471, 0, 3.71693, 0, -0.253471, 0, 0.967343, 0.489019, 0.387818, -0.507256)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0125835, 0, 0.999921, 0, 3.71693, 0, -0.999921, 0, 0.0125835, -0.510981, 0.387818, -0.507256)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.235108, 0, -0.971969, 0, 3.71693, 0, 0.971969, 0, -0.235108, 0.489019, 0.387818, -0.12433)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.775132, 0, 0.631799, 0, 3.71693, 0, -0.631799, 0, 0.775132, -0.482774, 0.387818, -0.105225)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.225053, 0, 0.974346, 0, 3.71693, 0, -0.974346, 0, 0.225053, -0.139407, 0.387818, -0.105225)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.625474, 0, -0.780245, 0, 3.71693, 0, 0.780245, 0, 0.625474, 0.131109, 0.387818, -0.105225)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.680094, 0, 0.733125, 0, 3.71693, 0, -0.733125, 0, 0.680094, 0.489019, 0.387818, 0.129097)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.762024, 0, 0.647548, 0, 3.71693, 0, -0.647548, 0, 0.762024, -0.482774, 0.387818, 0.148201)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.982964, 0, 0.183797, 0, 3.71693, 0, -0.183797, 0, -0.982964, -0.139407, 0.387818, 0.148201)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.618861, 0, -0.7855, 0, 3.71693, 0, 0.7855, 0, -0.618861, 0.131109, 0.387818, 0.148201)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.379715, 0, 0.925104, 0, 3.71693, 0, -0.925104, 0, 0.379715, 0.131109, 0.387818, -0.506522)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.181978, 0, -0.983303, 0, 3.71693, 0, 0.983303, 0, -0.181978, -0.144185, 0.387818, -0.506522)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0413002, 0, -0.999147, 0, 3.71693, 0, 0.999147, 0, -0.0413002, -0.144185, 0.387818, 0.506187)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.712687, 0, -0.701482, 0, 3.71693, 0, 0.701482, 0, 0.712687, 0.156289, 0.387818, 0.506187)
+mesh = SubResource("PrismMesh_4vey7")
+
+[node name="StaticBody3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4104, 0)
+shape = SubResource("BoxShape3D_87hyp")
+disabled = true

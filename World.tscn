@@ -8,3 +8,4 @@
 [node name="GameWorld" parent="." instance=ExtResource("1_uph7u")]
 
 [node name="DesignerWorld" parent="." instance=ExtResource("3_0kmq8")]
+visible = false

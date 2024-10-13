@@ -3,7 +3,7 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_57rv0"]
 height = 0.2
 
-[node name="MeshInstance3D" type="MeshInstance3D"]
+[node name="FireplaceMesh" type="MeshInstance3D"]
 mesh = SubResource("CylinderMesh_57rv0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
